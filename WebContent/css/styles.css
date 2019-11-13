@@ -1,0 +1,7 @@
+@charset "UTF-8";
+
+body { margin: 10px 0px; }
+
+.padded { padding: 5px 10px; }
+.padded-input { padding-top: .75rem; padding-bottom: .75rem; }
+.row input, .row .input-group-text { margin: 2px 0px; }
