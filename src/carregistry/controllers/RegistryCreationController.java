@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.RandomStringUtils;
+
 import carregistry.dataaccess.RegistryCreator;
 import carregistry.model.*;
 
@@ -22,8 +24,13 @@ public class RegistryCreationController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RegistryCreator rc = new RegistryCreator();
 		
+		// The database uses these primary keys as Varchars, so no autoincrementing :(
+		String addressId = RandomStringUtils.randomAlphanumeric(10);
+		String vehicleId = RandomStringUtils.randomAlphanumeric(10);
+		String regId     = RandomStringUtils.randomAlphanumeric(20);
+		
 		// A literal shit ton of data grabbing. Oh, boy...
-		Address a          = new Address(Integer.parseInt(request.getParameter("address-id")), request.getParameter("str-name"),
+		Address a          = new Address(addressId, request.getParameter("str-name"),
 										 Integer.parseInt(request.getParameter("str-no")), request.getParameter("apt-no"),
 										 request.getParameter("post-code"), request.getParameter("city"),
 										 request.getParameter("province"));
@@ -34,7 +41,7 @@ public class RegistryCreationController extends HttpServlet {
 				 					   a);
 		VehicleDetails vd  = new VehicleDetails(request.getParameter("vin"), request.getParameter("color"),
 												Integer.parseInt(request.getParameter("mileage")));
-		Vehicle v          = new Vehicle(request.getParameter("vehicle-id"), request.getParameter("make"),
+		Vehicle v          = new Vehicle(vehicleId, request.getParameter("make"),
 										 request.getParameter("model"), Integer.parseInt(request.getParameter("made")),
 										 Double.parseDouble(request.getParameter("weight")),
 										 Double.parseDouble(request.getParameter("cost")),
@@ -48,8 +55,8 @@ public class RegistryCreationController extends HttpServlet {
 											 Date.valueOf(request.getParameter("plate-expiry-date")),
 											 Boolean.parseBoolean(request.getParameter("due")),
 											 Double.parseDouble(request.getParameter("renewal-fee")),
-											 request.getParameter("plate-branch"), request.getParameter("reg-id"));
-		VehicleRegistry vr = new VehicleRegistry(request.getParameter("reg-id"), request.getParameter("reg-insurance-name"),
+											 request.getParameter("plate-branch"), regId);
+		VehicleRegistry vr = new VehicleRegistry(regId, request.getParameter("reg-insurance-name"),
 												 Date.valueOf(request.getParameter("reg-issue-date")),
 												 Date.valueOf(request.getParameter("reg-expiry-date")),
 												 Double.parseDouble(request.getParameter("reg-fee")),

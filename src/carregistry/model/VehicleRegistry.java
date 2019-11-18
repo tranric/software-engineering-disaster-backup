@@ -3,7 +3,7 @@ package carregistry.model;
 import java.sql.Date;
 
 public class VehicleRegistry {
-	private String regId, branch, lien, insuranceName;
+	private String id, branch, lien, insuranceName;
 	private Date registerDate, insuranceExpiry;
 	private double tax;
 	
@@ -12,7 +12,7 @@ public class VehicleRegistry {
 	private IssuedPlate issuedPlate;
 	
 	public VehicleRegistry() {
-		this.regId           = "";
+		this.id              = "";
 		this.insuranceName   = "";
 		this.registerDate    = null;
 		this.insuranceExpiry = null;
@@ -24,11 +24,11 @@ public class VehicleRegistry {
 		this.issuedPlate     = null;
 	}
 	
-	public VehicleRegistry(String regId, String insuranceName,
+	public VehicleRegistry(String id, String insuranceName,
 						   Date registerDate, Date insuranceExpiry, double tax,
 						   String branch, String lien,
 						   Owner owner, Vehicle vehicle, IssuedPlate issuedPlate) {
-		this.regId           = regId;
+		this.id              = id;
 		this.insuranceName   = insuranceName;
 		this.registerDate    = registerDate;
 		this.insuranceExpiry = insuranceExpiry;
@@ -40,7 +40,7 @@ public class VehicleRegistry {
 		this.issuedPlate     = issuedPlate;
 	}
 	
-	public String      getRegId()           { return regId; }
+	public String      getId()              { return id; }
 	public String      getInsuranceName()   { return insuranceName; }
 	public Date        getRegisterDate()    { return registerDate; }
 	public Date        getInsuranceExpiry() { return insuranceExpiry; }
@@ -51,7 +51,7 @@ public class VehicleRegistry {
 	public Vehicle     getVehicle()         { return vehicle; }
 	public IssuedPlate getIssuedPlate()     { return issuedPlate; }
 	
-	public void setRegId(String regId)                   { this.regId = regId; }
+	public void setId(String id)                         { this.id = id; }
 	public void setInsuranceName(String insuranceName)   { this.insuranceName = insuranceName; }
 	public void setRegisterDate(Date registerDate)       { this.registerDate = registerDate; }
 	public void setInsuranceExpiry(Date insuranceExpiry) { this.insuranceExpiry = insuranceExpiry; }

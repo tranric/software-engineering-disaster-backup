@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import carregistry.model.*;
 
 public class RegistryCreator {
-	String url      = "jdbc:mysql://localhost:3306/vrs?serverTimezone=UTC",
+	String url      = "jdbc:mysql://localhost:3306/vrs?serverTimezone=UTC&yearIsDateType=false",
 		   user     = "root",
 		   password = "sqlpass";
 	
@@ -16,14 +16,15 @@ public class RegistryCreator {
 		
 		try {
 			Connection connection = new DatabaseConnector().getMySQLConnection(url, user, password);
-			PreparedStatement stmt = connection.prepareStatement("INSERT INTO AddressBook VALUES (?, ?, ?, ?, ?, ?)");
+			PreparedStatement stmt = connection.prepareStatement("INSERT INTO AddressBook VALUES (?, ?, ?, ?, ?, ?, ?)");
 			
-			stmt.setInt(1, a.getStreetNumber());
-			stmt.setString(2, a.getStreetName());
-			stmt.setString(3, a.getPostalCode());
-			stmt.setString(4, a.getCity());
-			stmt.setString(5, a.getProvince());
-			stmt.setString(6, a.getUnit());
+			stmt.setString(1, a.getId());
+			stmt.setInt(2, a.getStreetNumber());
+			stmt.setString(3, a.getStreetName());
+			stmt.setString(4, a.getPostalCode());
+			stmt.setString(5, a.getCity());
+			stmt.setString(6, a.getProvince());
+			stmt.setString(7, a.getUnit());
 			
 			result = stmt.executeUpdate();
 			
@@ -44,9 +45,10 @@ public class RegistryCreator {
 		
 		try {
 			Connection connection = new DatabaseConnector().getMySQLConnection(url, user, password);
-			String sql = "INSERT INTO Owners VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+			String ownerSql = "INSERT INTO Owners VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+			String ownerAddressSql = "INSERT INTO OwnerAddress VALUES (?, ?)";
 			
-			PreparedStatement stmt = connection.prepareStatement(sql);
+			PreparedStatement stmt = connection.prepareStatement(ownerSql);
 			stmt.setString(1, o.getFirstName());
 			stmt.setString(2, o.getMiddleInitial());
 			stmt.setString(3, o.getLastName());
@@ -55,6 +57,12 @@ public class RegistryCreator {
 			stmt.setString(6, o.getEmail());
 			stmt.setString(7, o.getPhone());
 			stmt.setString(8, o.getDriverLicence());
+			
+			result = stmt.executeUpdate();
+			
+			stmt = connection.prepareStatement(ownerAddressSql);
+			stmt.setString(1, o.getDriverLicence());
+			stmt.setString(2, o.getAddress().getId());
 			
 			result = stmt.executeUpdate();
 			
@@ -118,7 +126,7 @@ public class RegistryCreator {
 		
 		try {
 			Connection connection = new DatabaseConnector().getMySQLConnection(url, user, password);
-			PreparedStatement stmt = connection.prepareStatement("INSERT INTO IssuedPlate VALUES (?,?,?,?,?,?,?,?)");
+			PreparedStatement stmt = connection.prepareStatement("INSERT INTO IssuedPlates VALUES (?,?,?,?,?,?,?,?)");
 			
 			stmt.setString(1, ip.getPlateNumber());
 			stmt.setDate(2, ip.getIssueDate());
@@ -154,7 +162,7 @@ public class RegistryCreator {
 			stmt.setString(2, vr.getOwner().getDriverLicence());
 			stmt.setDate(3, vr.getRegisterDate());
 			stmt.setDouble(4, vr.getTax());
-			stmt.setString(5, vr.getRegId());
+			stmt.setString(5, vr.getId());
 			stmt.setString(6, vr.getBranch());
 			stmt.setString(7, vr.getLien());
 			stmt.setString(8, vr.getInsuranceName());

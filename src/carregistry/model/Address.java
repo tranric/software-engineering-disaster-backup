@@ -1,11 +1,11 @@
 package carregistry.model;
 
 public class Address {
-	private String streetName, postalCode, city, province, unit;
-	private int id, streetNumber;
+	private String id, streetName, postalCode, city, province, unit;
+	private int streetNumber;
 	
 	public Address() {
-		this.id           = 0;
+		this.id           = "";
 		this.streetName   = "";
 		this.streetNumber = 0;
 		this.unit         = "";
@@ -14,7 +14,7 @@ public class Address {
 		this.province     = "";
 	}
 	
-	public Address(int id, String streetName, int streetNumber, String unit, String postalCode, String city, String province) {
+	public Address(String id, String streetName, int streetNumber, String unit, String postalCode, String city, String province) {
 		this.id           = id;
 		this.streetName   = streetName;
 		this.streetNumber = streetNumber;
@@ -24,7 +24,7 @@ public class Address {
 		this.province     = province;
 	}
 	
-	public int    getId()           { return id; }
+	public String getId()           { return id; }
 	public String getStreetName()   { return streetName; }
 	public int    getStreetNumber() { return streetNumber; }
 	public String getUnit()         { return unit; }
@@ -32,7 +32,7 @@ public class Address {
 	public String getCity()         { return city; }
 	public String getProvince()     { return province; }
 	
-	public void setId(int id)                     { this.id = id; }
+	public void setId(String id)                  { this.id = id; }
 	public void setStreetName(String streetName)  { this.streetName = streetName; }
 	public void setStreetNumber(int streetNumber) { this.streetNumber = streetNumber; }
 	public void setUnit(String unit)              { this.unit = unit; }

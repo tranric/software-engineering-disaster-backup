@@ -12,7 +12,7 @@
 		<div class="container">
 			<h1>Create Car Registry</h1>
 			
-			<form>
+			<form action="CreateRegistry.do" method="POST">
 				<div class="form-group registry-info">
 					<div class="row">
 						<div class="col"><h5>Registration Information</h5></div>
@@ -33,7 +33,7 @@
 						<div class="col-3 font-weight-bold">Registration fee</div>
 						<div class="col">
 							<div class="input-group">
-								<input type="text" class="form-control" name="reg-fee" required>
+								<input type="text" class="form-control" name="reg-fee" placeholder="e.g. 50.00" required>
 								<div class="input-group-append">
 									<span class="input-group-text">CAD</span>
 								</div>
@@ -43,19 +43,19 @@
 					<div class="row">
 						<div class="col-3 font-weight-bold">Branch</div>
 						<div class="col">
-							<input type="text" class="form-control" name="reg-branch">
+							<input type="text" class="form-control" maxlength="20" name="reg-branch">
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-3 font-weight-bold">Lien</div>
 						<div class="col">
-							<input type="text" class="form-control" name="reg-lien">
+							<input type="text" class="form-control" maxlength="255" name="reg-lien">
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-3 font-weight-bold">Insurance name</div>
 						<div class="col">
-							<input type="text" class="form-control" name="reg-insurance-name">
+							<input type="text" class="form-control" maxlength="255" name="reg-insurance-name">
 						</div>
 					</div>
 					<div class="row">
@@ -72,12 +72,18 @@
 						<div class="col"><h5>Vehicle Owner Information</h5></div>
 					</div>
 					<div class="row">
+						<div class="col-3 font-weight-bold">Driver Licence Number</div>
+						<div class="col">
+							<input type="text" class="form-control" maxlength="10" name="driver-licence" required>
+						</div>
+					</div>
+					<div class="row">
 						<div class="col-3 font-weight-bold">Full name</div>
 						<div class="col">
 							<div class="input-group">
-								<input type="text" class="form-control" name="first-name" placeholder="First" required>
-								<input type="text" class="form-control" name="middle-initial" placeholder="Middle Initial (optional)" maxlength="1">
-								<input type="text" class="form-control" name="last-name" placeholder="Last" required>
+								<input type="text" class="form-control" name="first-name" maxlength="20" placeholder="First" required>
+								<input type="text" class="form-control" name="middle-initial" maxlength="1" placeholder="Middle Initial (optional)" maxlength="1">
+								<input type="text" class="form-control" name="last-name" maxlength="10" placeholder="Last" required>
 							</div>
 						</div>
 					</div>
@@ -117,11 +123,11 @@
 						<div class="col">
 							<div class="input-group">
 								<input type="text" class="form-control" name="str-no" placeholder="Street No." required>
-								<input type="text" class="form-control" name="str-name" placeholder="Street Name" required>
-								<input type="text" class="form-control" name="apt-no" placeholder="Apartment No.">
+								<input type="text" class="form-control" name="str-name" maxlength="50" placeholder="Street Name" required>
+								<input type="text" class="form-control" name="apt-no" maxlength="8" placeholder="Apartment No.">
 							</div>
-							<input type="text" class="form-control" name="post-code" placeholder="Postal Code" required>
-							<input type="text" class="form-control" name="city" placeholder="City" required>
+							<input type="text" class="form-control" name="post-code" maxlength="6" placeholder="Postal Code" required>
+							<input type="text" class="form-control" name="city" maxlength="10" placeholder="City" required>
 							<select class="form-control" name="province" required>
 								<option value="AB">Alberta</option>
 								<option value="BC">British Columbia</option>
@@ -148,21 +154,21 @@
 					<div class="row">
 						<div class="col-3 font-weight-bold">VIN</div>
 						<div class="col">
-							<input type="text" class="form-control" name="vin" placeholder="e.g. JT4RN13P7K0001611">
+							<input type="text" class="form-control" name="vin" maxlength="28" placeholder="e.g. JT4RN13P7K0001611">
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-3 font-weight-bold">Properties</div>
 						<div class="col">
 							<div class="input-group">
-								<input type="text" class="form-control" name="make" placeholder="Make" required>
-								<input type="text" class="form-control" name="model" placeholder="Model" required>
-								<input type="number" class="form-control" name="made" placeholder="Year" required>
+								<input type="text" class="form-control" name="make" maxlength="10" placeholder="Make" required>
+								<input type="text" class="form-control" name="model" maxlength="10" placeholder="Model" required>
+								<input type="number" class="form-control" name="made" maxlength="4" placeholder="Year" required>
 							</div>
 							
-							<input type="text" class="form-control" name="model-type" placeholder="Model type" required>
-							<input type="text" class="form-control" name="body-style" placeholder="Body style" required>
-							<input type="number" class="form-control" name="weight" min="0" placeholder="Gross weight" required>
+							<input type="text" class="form-control" name="model-type" maxlength="20" placeholder="Model type" required>
+							<input type="text" class="form-control" name="body-style" maxlength="20" placeholder="Body style" required>
+							<input type="text" class="form-control" name="weight" placeholder="Gross weight" required>
 							<input type="number" class="form-control" name="passengers" min="0" placeholder="Number of passengers" required>
 							
 							<div class="custom-control custom-checkbox padded-input">
@@ -196,8 +202,8 @@
 					<div class="row">
 						<div class="col-3 font-weight-bold">Plate Info</div>
 						<div class="col">
-							<input type="text" class="form-control" name="plate-number" placeholder="Number" required>
-							<input type="text" class="form-control" name="plate-type" placeholder="Type" required>
+							<input type="text" class="form-control" name="plate-number" maxlength="8" placeholder="Number" required>
+							<input type="text" class="form-control" name="plate-type" maxlength="16" placeholder="Type" required>
 							
 							<div class="input-group">
 								<input type="text" class="form-control" name="renewal-fee" placeholder="Renewal fee" required>
@@ -231,12 +237,14 @@
 					<div class="row">
 						<div class="col-3 font-weight-bold">Branch</div>
 						<div class="col">
-							<input type="text" class="form-control" name="plate-branch">
+							<input type="text" class="form-control" name="plate-branch" maxlength="20">
 						</div>
 					</div>
 				</div>
 				
-				<div class="form-group licence-sticker-info">
+				<!-- The database doesn't have the licence sticker table for some reason,
+				     but I'll keep this here in case it's needed -->
+				<!-- <div class="form-group licence-sticker-info">
 					<div class="row">
 						<div class="col"><h5>License Sticker</h5></div>
 					</div>
@@ -258,7 +266,7 @@
 							<input type="text" class="form-control" name="sticker-year" required>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				
 				<button type="submit" class="btn btn-primary btn-block btn-elevated">Submit</button>
 			</form>
