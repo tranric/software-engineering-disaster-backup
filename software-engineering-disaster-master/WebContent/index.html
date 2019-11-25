@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Create Registry</title>
+		
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link rel="stylesheet" href="css/styles.css">
+	</head>
+	
+	<body>
+		<div class="container">
+			<h1>Create Car Registry</h1>
+			
+			<form action="CreateRegistry.do" method="POST">
+				<div class="form-group registry-info">
+					<div class="row">
+						<div class="col"><h5>Registration Information</h5></div>
+					</div>
+					<div class="row">
+						<div class="col-3 font-weight-bold">Issue date</div>
+						<div class="col">
+							<input type="date" class="form-control" name="reg-issue-date" required>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3 font-weight-bold">Expiry date</div>
+						<div class="col">
+							<input type="date" class="form-control" name="reg-expiry-date" required>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3 font-weight-bold">Registration fee</div>
+						<div class="col">
+							<div class="input-group">
+								<input type="text" class="form-control" name="reg-fee" placeholder="e.g. 50.00" required>
+								<div class="input-group-append">
+									<span class="input-group-text">CAD</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3 font-weight-bold">Branch</div>
+						<div class="col">
+							<input type="text" class="form-control" maxlength="20" name="reg-branch">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3 font-weight-bold">Lien</div>
+						<div class="col">
+							<input type="text" class="form-control" maxlength="255" name="reg-lien">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3 font-weight-bold">Insurance name</div>
+						<div class="col">
+							<input type="text" class="form-control" maxlength="255" name="reg-insurance-name">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3 font-weight-bold">Insurance valid until</div>
+						<div class="col">
+							<input type="date" class="form-control" name="reg-insurance-valid">
+						</div>
+					</div>
+				</div>
+				
+				<!-- In case if this won't be needed here, you can cut and paste this in the "New user" page. -->
+				<div class="form-group owner-info">
+					<div class="row">
+						<div class="col"><h5>Vehicle Owner Information</h5></div>
+					</div>
+					<div class="row">
+						<div class="col-3 font-weight-bold">Driver Licence Number</div>
+						<div class="col">
+							<input type="text" class="form-control" maxlength="10" name="driver-licence" required>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3 font-weight-bold">Full name</div>
+						<div class="col">
+							<div class="input-group">
+								<input type="text" class="form-control" name="first-name" maxlength="20" placeholder="First" required>
+								<input type="text" class="form-control" name="middle-initial" maxlength="1" placeholder="Middle Initial (optional)" maxlength="1">
+								<input type="text" class="form-control" name="last-name" maxlength="10" placeholder="Last" required>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3 font-weight-bold">Gender</div>
+						<div class="col">
+							<div class="custom-control custom-radio custom-control-inline padded-input">
+								<input type="radio" id="gender-radio1" class="custom-control-input" name="gender-radio">
+								<label for="gender-radio1" class="custom-control-label">M</label>
+							</div>
+							<div class="custom-control custom-radio custom-control-inline padded-input">
+								<input type="radio" id="gender-radio2" class="custom-control-input" name="gender-radio">
+								<label for="gender-radio2" class="custom-control-label">F</label>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3 font-weight-bold">Email</div>
+						<div class="col">
+							<input type="email" class="form-control" name="owner-email" required>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3 font-weight-bold">Phone</div>
+						<div class="col">
+							<input type="tel" class="form-control" name="owner-phone" required>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3 font-weight-bold">Date of birth</div>
+						<div class="col">
+							<input type="date" class="form-control" name="owner-dob" required>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3 font-weight-bold">Address</div>
+						<div class="col">
+							<div class="input-group">
+								<input type="text" class="form-control" name="str-no" placeholder="Street No." required>
+								<input type="text" class="form-control" name="str-name" maxlength="50" placeholder="Street Name" required>
+								<input type="text" class="form-control" name="apt-no" maxlength="8" placeholder="Apartment No.">
+							</div>
+							<input type="text" class="form-control" name="post-code" maxlength="6" placeholder="Postal Code" required>
+							<input type="text" class="form-control" name="city" maxlength="10" placeholder="City" required>
+							<select class="form-control" name="province" required>
+								<option value="AB">Alberta</option>
+								<option value="BC">British Columbia</option>
+								<option value="MB">Manitoba</option>
+								<option value="NB">New Brunswick</option>
+								<option value="NL">Newfoundland</option>
+								<option value="NT">Northwest Territories</option>
+								<option value="NS">Nova Scotia</option>
+								<option value="NU">Nunavut</option>
+								<option value="ON">Ontario</option>
+								<option value="PE">Prince Edward Island</option>
+								<option value="QC">Quebec</option>
+								<option value="SK">Saskachewan</option>
+								<option value="YT">Yukon</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group vehicle-info">
+					<div class="row">
+						<div class="col"><h5>Vehicle</h5></div>
+					</div>
+					<div class="row">
+						<div class="col-3 font-weight-bold">VIN</div>
+						<div class="col">
+							<input type="text" class="form-control" name="vin" maxlength="28" placeholder="e.g. JT4RN13P7K0001611">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3 font-weight-bold">Properties</div>
+						<div class="col">
+							<div class="input-group">
+								<input type="text" class="form-control" name="make" maxlength="10" placeholder="Make" required>
+								<input type="text" class="form-control" name="model" maxlength="10" placeholder="Model" required>
+								<input type="number" class="form-control" name="made" maxlength="4" placeholder="Year" required>
+							</div>
+							
+							<input type="text" class="form-control" name="model-type" maxlength="20" placeholder="Model type" required>
+							<input type="text" class="form-control" name="body-style" maxlength="20" placeholder="Body style" required>
+							<input type="text" class="form-control" name="weight" placeholder="Gross weight" required>
+							<input type="number" class="form-control" name="passengers" min="0" placeholder="Number of passengers" required>
+							
+							<div class="custom-control custom-checkbox padded-input">
+								<input type="checkbox" class="custom-control-input" name="diesel" id="is-diesel">
+								<label class="custom-control-label" for="is-diesel">Diesel-powered</label>
+							</div>
+								
+							<input type="text" class="form-control" name="color" placeholder="Color" required>
+							
+							<div class="input-group">
+								<input type="text" class="form-control" name="cost" placeholder="Cost" required>
+								<div class="input-group-append">
+									<span class="input-group-text">CAD</span>
+								</div>
+							</div>
+							
+							<div class="input-group">
+								<input type="text" class="form-control" name="mileage" placeholder="Mileage" required>
+								<div class="input-group-append">
+									<span class="input-group-text">km</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group licence-plate-info">
+					<div class="row">
+						<div class="col"><h5>Licence Plate</h5></div>
+					</div>
+					<div class="row">
+						<div class="col-3 font-weight-bold">Plate Info</div>
+						<div class="col">
+							<input type="text" class="form-control" name="plate-number" maxlength="8" placeholder="Number" required>
+							<input type="text" class="form-control" name="plate-type" maxlength="16" placeholder="Type" required>
+							
+							<div class="input-group">
+								<input type="text" class="form-control" name="renewal-fee" placeholder="Renewal fee" required>
+								<div class="input-group-append">
+									<span class="input-group-text">CAD</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3 font-weight-bold">Issue date</div>
+						<div class="col">
+							<input type="date" class="form-control" name="plate-issue-date" required>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3 font-weight-bold">Expiry date</div>
+						<div class="col">
+							<input type="date" class="form-control" name="plate-expiry-date" required>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3 font-weight-bold"></div>
+						<div class="col">
+							<div class="custom-control custom-checkbox padded-input">
+								<input type="checkbox" class="custom-control-input" name="due" id="is-due">
+								<label class="custom-control-label" for="is-due">Is due?</label>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3 font-weight-bold">Branch</div>
+						<div class="col">
+							<input type="text" class="form-control" name="plate-branch" maxlength="20">
+						</div>
+					</div>
+				</div>
+				
+				<!-- The database doesn't have the licence sticker table for some reason,
+				     but I'll keep this here in case it's needed -->
+				<!-- <div class="form-group licence-sticker-info">
+					<div class="row">
+						<div class="col"><h5>License Sticker</h5></div>
+					</div>
+					<div class="row">
+						<div class="col-3 font-weight-bold">Number</div>
+						<div class="col">
+							<input type="text" class="form-control" name="sticker-number" required>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3 font-weight-bold">Type</div>
+						<div class="col">
+							<input type="text" class="form-control" name="sticker-type" required>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3 font-weight-bold">Year</div>
+						<div class="col">
+							<input type="text" class="form-control" name="sticker-year" required>
+						</div>
+					</div>
+				</div> -->
+				
+				<button type="submit" class="btn btn-primary btn-block btn-elevated">Submit</button>
+			</form>
+		</div>
+	
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	</body>
+</html>
