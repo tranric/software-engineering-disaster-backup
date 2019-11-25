@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<h1>Welcome to My Greeting Page</h1>
+<h1>Test Car Reg page - WIP, To be removed.</h1>
 
 <%
 	if (session.getAttribute("Login") == null){
