@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -10,17 +11,17 @@
 <h1>Search Menu</h1>
 <form method="post" action="SearchController">
 <h2>Search Information</h2>
+Enter Make (ex. Toyota, Honda): <br>
+<input type ="text" name="makename">
+<br><br><br>
 Enter Model (ex. Corolla, Camry): <br>
 <input type ="text" name="modelname">
 <br><br><br>
 Enter Number of Passengers: <br>
 <input type ="text" name="passname">
 <br><br><br>
-Enter Year (ex.2012-01-01): <br>
+Enter Year (ex.2012): <br>
 <input type ="text" name="yearname">
-<br><br><br>
-Enter Colour (ex. Red, Blue, White, Grey, etc.): <br>
-<input type ="text" name="colourname">
 <br><br><br>
 Search Found: <br>
 <textarea name="sreturn" readonly rows="4" cols="50" style="display:none;">

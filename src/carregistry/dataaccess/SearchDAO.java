@@ -5,19 +5,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import carregistry.model.CreateVehicleBean;
+import carregistry.dataaccess.CreateVehicleBean;
 import carregistry.model.DatabaseConnector;
 import carregistry.model.Vehicle;
 
 
 public class SearchDAO {
-	
-	ResultSet rSet;
-	
-	
-	public ArrayList<Vehicle> viewData(String model, String passenger, String year, String colour) throws Exception {
+	public ArrayList<Vehicle> viewData(String make, String model, String passenger, String year) throws Exception {
+		ResultSet rSet = null;
 		
-		String sql = "SELECT * from CarReg where Model = '"+ model +"' AND Passengers = '"+ passenger +"' AND YearReg = '"+ year +"' AND ModelColour '"+ colour +"' ";
+		String sql = "SELECT * from VehicleModels where Model = '"+ model +"' AND Passengers = '"+ passenger +"' AND Year = '"+ year +"' AND Make = '"+ make +"'";  
 		DatabaseConnector getConnection = new DatabaseConnector();
 		try {
 			 rSet = getConnection.getMySQLConnection().createStatement().executeQuery(sql);
