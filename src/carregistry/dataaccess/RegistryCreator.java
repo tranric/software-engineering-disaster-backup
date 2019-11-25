@@ -7,15 +7,13 @@ import java.sql.SQLException;
 import carregistry.model.*;
 
 public class RegistryCreator {
-	String url      = "jdbc:mysql://localhost:3306/vrs?serverTimezone=UTC&yearIsDateType=false",
-		   user     = "root",
-		   password = "sqlpass";
+
 	
 	public int insertAddress(Address a) {
 		int result = 0;
 		
 		try {
-			Connection connection = new DatabaseConnector().getMySQLConnection(url, user, password);
+			Connection connection = new DatabaseConnector().getMySQLConnection();
 			PreparedStatement stmt = connection.prepareStatement("INSERT INTO AddressBook VALUES (?, ?, ?, ?, ?, ?, ?)");
 			
 			stmt.setString(1, a.getId());
@@ -44,7 +42,7 @@ public class RegistryCreator {
 		int result = 0;
 		
 		try {
-			Connection connection = new DatabaseConnector().getMySQLConnection(url, user, password);
+			Connection connection = new DatabaseConnector().getMySQLConnection();
 			String ownerSql = "INSERT INTO Owners VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 			String ownerAddressSql = "INSERT INTO OwnerAddress VALUES (?, ?)";
 			
@@ -82,7 +80,7 @@ public class RegistryCreator {
 		int result = 0;
 		
 		try {
-			Connection connection = new DatabaseConnector().getMySQLConnection(url, user, password);
+			Connection connection = new DatabaseConnector().getMySQLConnection();
 			String vehicleSql = "INSERT INTO VehicleModels VALUES (?,?,?,?,?,?,?,?,?,?)";
 			String vehicleDetailsSql = "INSERT INTO VehicleDetails VALUES (?, ?, ?, ?, ?)";
 			
@@ -125,7 +123,7 @@ public class RegistryCreator {
 		int result = 0;
 		
 		try {
-			Connection connection = new DatabaseConnector().getMySQLConnection(url, user, password);
+			Connection connection = new DatabaseConnector().getMySQLConnection();
 			PreparedStatement stmt = connection.prepareStatement("INSERT INTO IssuedPlates VALUES (?,?,?,?,?,?,?,?)");
 			
 			stmt.setString(1, ip.getPlateNumber());
@@ -155,7 +153,7 @@ public class RegistryCreator {
 		int result = 0;
 		
 		try {
-			Connection connection = new DatabaseConnector().getMySQLConnection(url, user, password);
+			Connection connection = new DatabaseConnector().getMySQLConnection();
 			PreparedStatement stmt = connection.prepareStatement("INSERT INTO VehicleRegistry VALUES (?,?,?,?,?,?,?,?,?)");
 			
 			stmt.setString(1, vr.getVehicle().getVehicleDetails().getVin());

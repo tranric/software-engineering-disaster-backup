@@ -5,8 +5,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnector {
-	public Connection getMySQLConnection(String url, String user, String password) throws SQLException, ClassNotFoundException {
+	public Connection getMySQLConnection() throws SQLException, ClassNotFoundException {
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		return DriverManager.getConnection(url, user, password);
+		return DriverManager.getConnection("jdbc:mysql://localhost:3306/vrs", "root", "toor");
 	}
 }
