@@ -25,7 +25,7 @@ public class SearchController extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		request.getRequestDispatcher("search.html").forward(request, response);
+		request.getRequestDispatcher("search.jsp").forward(request, response);
 
 	}
 
