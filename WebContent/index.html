@@ -33,7 +33,7 @@
 						<div class="col-3 font-weight-bold">Registration fee</div>
 						<div class="col">
 							<div class="input-group">
-								<input type="text" class="form-control" name="reg-fee" placeholder="e.g. 50.00" required>
+								<input type="text" class="form-control" name="reg-fee" placeholder="e.g. 50.00" pattern="^([0-9]+([.][0-9]*)?|[.][0-9]+)$" required>
 								<div class="input-group-append">
 									<span class="input-group-text">CAD</span>
 								</div>
@@ -74,7 +74,7 @@
 					<div class="row">
 						<div class="col-3 font-weight-bold">Driver Licence Number</div>
 						<div class="col">
-							<input type="text" class="form-control" maxlength="10" name="driver-licence" required>
+							<input type="text" class="form-control" maxlength="10" name="driver-licence" pattern="^[0-9]+$" required>
 						</div>
 					</div>
 					<div class="row">
@@ -91,11 +91,11 @@
 						<div class="col-3 font-weight-bold">Gender</div>
 						<div class="col">
 							<div class="custom-control custom-radio custom-control-inline padded-input">
-								<input type="radio" id="gender-radio1" class="custom-control-input" name="gender-radio">
+								<input type="radio" id="gender-radio1" class="custom-control-input" name="gender-radio" value="M">
 								<label for="gender-radio1" class="custom-control-label">M</label>
 							</div>
 							<div class="custom-control custom-radio custom-control-inline padded-input">
-								<input type="radio" id="gender-radio2" class="custom-control-input" name="gender-radio">
+								<input type="radio" id="gender-radio2" class="custom-control-input" name="gender-radio" value="F">
 								<label for="gender-radio2" class="custom-control-label">F</label>
 							</div>
 						</div>
@@ -122,11 +122,11 @@
 						<div class="col-3 font-weight-bold">Address</div>
 						<div class="col">
 							<div class="input-group">
-								<input type="text" class="form-control" name="str-no" placeholder="Street No." required>
+								<input type="text" class="form-control" name="str-no" placeholder="Street No." pattern="^[0-9]+$" required>
 								<input type="text" class="form-control" name="str-name" maxlength="50" placeholder="Street Name" required>
 								<input type="text" class="form-control" name="apt-no" maxlength="8" placeholder="Apartment No.">
 							</div>
-							<input type="text" class="form-control" name="post-code" maxlength="6" placeholder="Postal Code" required>
+							<input type="text" class="form-control" name="post-code" maxlength="6" placeholder="Postal Code (no spaces)" pattern="^[A-Z][0-9][A-Z][0-9][A-Z][0-9]$" required>
 							<input type="text" class="form-control" name="city" maxlength="10" placeholder="City" required>
 							<select class="form-control" name="province" required>
 								<option value="AB">Alberta</option>
@@ -168,7 +168,14 @@
 							
 							<input type="text" class="form-control" name="model-type" maxlength="20" placeholder="Model type" required>
 							<input type="text" class="form-control" name="body-style" maxlength="20" placeholder="Body style" required>
-							<input type="text" class="form-control" name="weight" placeholder="Gross weight" required>
+							
+							<div class="input-group">								
+								<input type="text" class="form-control" name="weight" placeholder="Gross weight" pattern="^([0-9]+([.][0-9]*)?|[.][0-9]+)$" required>
+								<div class="input-group-append">
+									<span class="input-group-text">kg</span>
+								</div>
+							</div>
+							
 							<input type="number" class="form-control" name="passengers" min="0" placeholder="Number of passengers" required>
 							
 							<div class="custom-control custom-checkbox padded-input">
@@ -179,14 +186,14 @@
 							<input type="text" class="form-control" name="color" placeholder="Color" required>
 							
 							<div class="input-group">
-								<input type="text" class="form-control" name="cost" placeholder="Cost" required>
+								<input type="text" class="form-control" name="cost" placeholder="Cost" pattern="^([0-9]+([.][0-9]*)?|[.][0-9]+)$" required>
 								<div class="input-group-append">
 									<span class="input-group-text">CAD</span>
 								</div>
 							</div>
 							
 							<div class="input-group">
-								<input type="text" class="form-control" name="mileage" placeholder="Mileage" required>
+								<input type="number" class="form-control" min="0" name="mileage" placeholder="Mileage" required>
 								<div class="input-group-append">
 									<span class="input-group-text">km</span>
 								</div>
@@ -206,7 +213,7 @@
 							<input type="text" class="form-control" name="plate-type" maxlength="16" placeholder="Type" required>
 							
 							<div class="input-group">
-								<input type="text" class="form-control" name="renewal-fee" placeholder="Renewal fee" required>
+								<input type="text" class="form-control" name="renewal-fee" placeholder="Renewal fee" pattern="^([0-9]+([.][0-9]*)?|[.][0-9]+)$" required>
 								<div class="input-group-append">
 									<span class="input-group-text">CAD</span>
 								</div>
@@ -268,7 +275,7 @@
 					</div>
 				</div> -->
 				
-				<button type="submit" class="btn btn-primary btn-block btn-elevated">Submit</button>
+				<button type="submit" class="btn btn-primary btn-block">Submit</button>
 			</form>
 		</div>
 	

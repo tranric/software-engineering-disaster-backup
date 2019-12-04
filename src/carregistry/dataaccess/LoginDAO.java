@@ -1,26 +1,31 @@
 package carregistry.dataaccess;
 
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import carregistry.model.LoginRS;
 import carregistry.model.DatabaseConnector;
-import carregistry.model.Users;
+import carregistry.model.User;
 
 
 public class LoginDAO {
 	
-	ResultSet rSet;
 	
-	
-	public ArrayList<Users> viewData(String id, String pwd) throws Exception {
+	public ArrayList<User> viewData(String id, String pwd) throws Exception {
+		ResultSet rSet = null;
 		
-		String sql = "SELECT * from Login where Userid = '"+ id +"' AND Pass = '"+ pwd +"'";
-		DatabaseConnector getConnection = new DatabaseConnector();
 		try {
-			 rSet = getConnection.getMySQLConnection().createStatement().executeQuery(sql);
+			Connection connection = new DatabaseConnector().getMySQLConnection();
+			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Login WHERE Userid = ? AND Pass = ?");
+			
+			stmt.setString(1, id);
+			stmt.setString(2, pwd);
+			
+			rSet = stmt.executeQuery();
 		} 
 		 catch (SQLException e) {
 			System.out.println("SQL: Exeception Fired from LoginDAO-viewData()..");
@@ -28,7 +33,6 @@ public class LoginDAO {
 		}
 
 		return new LoginRS().getUsers(rSet);
-		
 	}
 }
 

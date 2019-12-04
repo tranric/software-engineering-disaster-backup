@@ -6,26 +6,24 @@ import java.util.ArrayList;
 
 
 public class LoginRS {
-	Users Users;
-	public ArrayList<Users> getUsers(ResultSet r) {
-		
-		
-		ArrayList<Users> UsersList = new ArrayList<Users>();
+	public ArrayList<User> getUsers(ResultSet r) {
+		ArrayList<User> UsersList = new ArrayList<User>();
 		try {
 			while(r.next()) {
-				Users = new Users();
-				Users.setId(r.getString(1));
-				Users.setPassword(r.getString(2));
-				Users.setRole(r.getString(3));
-				UsersList.add(Users);
-				}		
+				User u = new User();
+				
+				u.setId(r.getString(1));
+				u.setPassword(r.getString(2));
+				u.setRole(r.getString(3));
+				
+				UsersList.add(u);
+			}		
 		} catch (SQLException e) {
 			System.out.println("SQL Exception Fire from LoginRS()..");
 			e.printStackTrace();
 		}
 		
 		return UsersList;
-		
 	}
 
 }

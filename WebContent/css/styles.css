@@ -5,3 +5,12 @@ body { margin: 10px 0px; }
 .padded { padding: 5px 10px; }
 .padded-input { padding-top: .75rem; padding-bottom: .75rem; }
 .row input, .row .input-group-text { margin: 2px 0px; }
+.error { color: red; padding: 5px;}
+
+.elevated-card {
+	width: 500px;
+	margin: 0 auto;
+	padding: 25px;
+	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.75);
+	border-radius: 10px;
+}
