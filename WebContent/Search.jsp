@@ -9,6 +9,35 @@
 		<link rel="stylesheet" href="css/styles.css">
 	</head>
 	<body>
+		<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+			<div class="collapse navbar-collapse w-100 order-1 order-md-0 dual-collapse2" id="navbar-dropdown">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a href="NewRecord.html" class="nav-link">New Record</a>
+					</li>
+					<li class="nav-item active">
+						<a href="Search.jsp" class="nav-link">Search</a>
+					</li>
+					
+				</ul>
+			</div>
+			
+			<div class="mx-auto order-0">
+				<a href="HomePageInitController.do" class="navbar-brand mx-auto">Daniel &amp; Son's Car Registry</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+			</div>
+			
+			<div class="collapse navbar-collapse w-100 order-3 dual-collapse2">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a href="ProcessLogout" class="btn btn-outline-primary nav-link">Logout</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	
 		<div class="container">
 			<h1>Search</h1>
 			<p class="text-muted">Enter something in one or several fields to find necessary records.</p>
@@ -29,7 +58,7 @@
 				<div class="row">
 					<div class="col-3 font-weight-bold">Year</div>
 					<div class="col">
-						<input class="form-control" type="text" name="yearname">
+						<input class="form-control" type="number" name="yearname">
 					</div>
 				</div>
 				<div class="row">

@@ -20,8 +20,9 @@ public class ProcessLogout extends HttpServlet {
 		session.removeAttribute("Role");
 		session.removeAttribute("Id");
 		session.removeAttribute("Login");
-		session.invalidate();
+		session.removeAttribute("records");
 		
-		response.sendRedirect("LoginPage.jsp");
+		session.invalidate();
+		request.getRequestDispatcher("LoginPage.jsp").forward(request, response);
 	}
 }

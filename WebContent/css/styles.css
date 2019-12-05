@@ -1,11 +1,13 @@
 @charset "UTF-8";
 
-body { margin: 10px 0px; }
+body { margin: 10px 10px; height: 100%; }
+body > .container { margin-top: 25px; }
 
 .padded { padding: 5px 10px; }
 .padded-input { padding-top: .75rem; padding-bottom: .75rem; }
 .row input, .row .input-group-text { margin: 2px 0px; }
 .error { color: red; padding: 5px;}
+.nothing-to-show { margin-top: 50px; }
 
 .elevated-card {
 	width: 500px;
@@ -14,3 +16,6 @@ body { margin: 10px 0px; }
 	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.75);
 	border-radius: 10px;
 }
+
+.table-sticky { position: relative; }
+.table-sticky th { position: sticky; }

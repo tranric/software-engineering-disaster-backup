@@ -27,18 +27,17 @@ public class ProcessLogin extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			HttpSession session = request.getSession();
-			ArrayList<User> Usercheck = new LoginDAO().viewData(
-					request.getParameter("id"), request.getParameter("pwd"));
+			ArrayList<User> Usercheck = new LoginDAO().viewData(request.getParameter("id"), request.getParameter("pwd"));
 			
 			if (Usercheck.size() == 1) {
 				session.setAttribute("Login", Usercheck);
 				session.setAttribute("Id", Usercheck.get(0).getId());
 				session.setAttribute("Role", Usercheck.get(0).getRole());
 				
-				response.sendRedirect("HelloPage.jsp");	
+				response.sendRedirect("HomePageInitController.do");	
 			} else {
-				session.setAttribute("loginError", "Sorry, the credentials you've entered were incorrect.");
-				response.sendRedirect("LoginPage.jsp");
+				request.setAttribute("loginError", "Sorry, the credentials you've entered were incorrect.");
+				request.getRequestDispatcher("LoginPage.jsp").forward(request, response);;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

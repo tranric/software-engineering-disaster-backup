@@ -9,8 +9,14 @@
 		<link rel="stylesheet" href="css/styles.css">
 	</head>
 	<body>
+		<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+			<div class="mx-auto order-0">
+				<span class="navbar-brand mx-auto">Daniel &amp; Son's Car Registry</span>
+			</div>
+		</nav>
+	
 		<div class="container elevated-card">
-			<h1 class="text-center">Log In</h1>
+			<h1 class="text-center">Login</h1>
 		
 			<form action="ProcessLogin" method="POST">
 				<div class="row">
@@ -28,11 +34,11 @@
 				
 				<div class="row error">
 					<div class="col text-center font-weight-bold">
-						${sessionScope.loginError}
+						${loginError}
 					</div>
 				</div>
 				
-				<button type="submit" class="btn btn-primary btn-block">Log In</button>
+				<button type="submit" class="btn btn-primary btn-block">Login</button>
 			</form>
 		</div>
 		
