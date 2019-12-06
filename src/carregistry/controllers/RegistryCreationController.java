@@ -49,14 +49,14 @@ public class RegistryCreationController extends HttpServlet {
 										 Double.parseDouble(request.getParameter("weight")),
 										 Double.parseDouble(request.getParameter("cost")),
 										 Integer.parseInt(request.getParameter("passengers")),
-										 Boolean.parseBoolean(request.getParameter("diesel")),
+										 request.getParameter("diesel") != null,
 										 request.getParameter("model-type"),
 										 request.getParameter("body-style"),
 										 vd, o);
 		IssuedPlate ip     = new IssuedPlate(request.getParameter("plate-number"), request.getParameter("plate-type"),
 											 Date.valueOf(request.getParameter("plate-issue-date")),
 											 Date.valueOf(request.getParameter("plate-expiry-date")),
-											 Boolean.parseBoolean(request.getParameter("due")),
+											 request.getParameter("due") != null,
 											 Double.parseDouble(request.getParameter("renewal-fee")),
 											 request.getParameter("plate-branch"), regId);
 		VehicleRegistry vr = new VehicleRegistry(regId, request.getParameter("reg-insurance-name"),

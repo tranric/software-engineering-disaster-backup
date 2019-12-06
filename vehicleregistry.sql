@@ -37,8 +37,8 @@ create table AddressBook(
 create table OwnerAddress(
     DriversLicID varchar(10) not null,
     Addressid varchar(10) not null,
-    foreign key (DriversLicID) references Owners(DriversLicID) on update cascade,
-    foreign key (Addressid) references AddressBook(Addressid) on update cascade
+    foreign key (DriversLicID) references Owners(DriversLicID) on update cascade on delete cascade,
+    foreign key (Addressid) references AddressBook(Addressid) on update cascade on delete cascade
 );
 
 create table VehicleModels(
@@ -62,8 +62,8 @@ create table VehicleDetails(
     Mileage int not null,
     ModelID varchar(10) not null,
     primary key (VIN),
-    foreign key (DriversLicID) references Owners(DriversLicID) on update cascade,
-    foreign key (ModelID) references VehicleModels(ModelID) on update cascade
+    foreign key (DriversLicID) references Owners(DriversLicID) on update cascade on delete cascade,
+    foreign key (ModelID) references VehicleModels(ModelID) on update cascade on delete cascade
 );
 
 create table VehicleRegistry(
@@ -77,8 +77,8 @@ create table VehicleRegistry(
     InsuranceName varchar(255) not null,
     InsuranceValidity date not null,
     primary key (RegistrationID),
-    foreign key (DriversLicID) references Owners(DriversLicID) on update cascade,
-    foreign key (VIN) references VehicleDetails(VIN) on update cascade
+    foreign key (DriversLicID) references Owners(DriversLicID) on update cascade on delete cascade,
+    foreign key (VIN) references VehicleDetails(VIN) on update cascade on delete cascade
 );
 
 create table IssuedPlates(
@@ -91,7 +91,7 @@ create table IssuedPlates(
     ISDue boolean,
     Branch varchar(20),
     primary key (PlateNumber),
-	foreign key (RegistrationID) references VehicleRegistry(RegistrationID) on update cascade
+	foreign key (RegistrationID) references VehicleRegistry(RegistrationID) on update cascade on delete cascade
 );
 
 insert into Login values ('admin', '$2a$10$DUkHSn/S9UTRIOPhQ1.qbOJxgoJhNN6bXHEt9lV83HXOBCB7blZUi', 'admin'); -- The password is 'admin'

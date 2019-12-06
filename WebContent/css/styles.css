@@ -8,6 +8,7 @@ body > .container { margin-top: 25px; }
 .row input, .row .input-group-text { margin: 2px 0px; }
 .error { color: red; padding: 5px;}
 .nothing-to-show { margin-top: 50px; }
+.inline-block { display: inline-block !important; }
 
 .btn-page-top { margin-bottom: .75rem !important; }
 .btn-page-bottom { margin-top: .75rem !important; }
