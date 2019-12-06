@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -16,9 +18,8 @@
 						<a href="NewRecord.html" class="nav-link">New Record</a>
 					</li>
 					<li class="nav-item active">
-						<a href="Search.jsp" class="nav-link">Search</a>
+						<a href="#" class="nav-link">Search</a>
 					</li>
-					
 				</ul>
 			</div>
 			
@@ -44,36 +45,77 @@
 			
 			<form action="SearchController" method="POST">
 				<div class="row">
-					<div class="col-3 font-weight-bold">Make</div>
+					<div class="col-3 font-weight-bold">VIN</div>
 					<div class="col">
-						<input class="form-control" type="text" name="makename">
+						<input class="form-control" type="text" name="vin" placeholder="e.g. JT4RN13P7K0001611">
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-3 font-weight-bold">Model</div>
+					<div class="col-3 font-weight-bold">Full Name</div>
 					<div class="col">
-						<input class="form-control" type="text" name="modelname">
+						<div class="input-group">
+							<input type="text" class="form-control" name="first-name" placeholder="First name">
+							<input type="text" class="form-control" name="middle-initial" placeholder="Middle initial">
+							<input type="text" class="form-control" name="last-name"  placeholder="Last name">
+						</div>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-3 font-weight-bold">Year</div>
+					<div class="col-3 font-weight-bold">Registration date</div>
 					<div class="col">
-						<input class="form-control" type="number" name="yearname">
+						<input class="form-control" type="date" name="reg-date">
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-3 font-weight-bold">Number of passengers</div>
-					<div class="col">
-						<input class="form-control" type="text" name="passname">
-					</div>
+				<div class="row justify-content-end">
+					<button type="submit" class="btn btn-primary btn-page-bottom" name="button">Search</button>	
 				</div>
-				
-				Search Found: <br>
-				<textarea name="sreturn" readonly rows="4" cols="50" style="display:none;">
-				</textarea> <br><br>
-				${vehicle}
-				<button type="submit" class="btn btn-primary btn-block" name="button">Search</button>	
 			</form>
+		</div>
+		
+		<div class="container">
+			<c:choose>
+				<c:when test="${searchResult == null}">
+					<%-- This condition is used when the page is opened for the first time --%>
+				</c:when>
+				<c:when test="${empty searchResult}">
+					<div class="row w-100 nothing-to-show">
+						<div class="mx-auto">
+							<h2>No records found</h2>
+						</div>
+					</div>
+				</c:when>
+				<c:otherwise>
+					<table class="table table-striped table-sticky" style="margin-top: 30px;">
+						<thead class="thead-dark">
+							<tr>
+								<th scope="col">Name</th>
+								<th scope="col">Vehicle</th>
+								<th scope="col">Registration Date</th>
+								<th scope="col">Details</th>
+							</tr>						
+						</thead>
+						<tbody class="table-hover">
+							<c:forEach items="${searchResult}" var="record" varStatus="loop">
+								<tr>
+									<td scope="col" class="align-middle">
+										${record.owner.firstName} 
+										<c:if test="${!empty record.owner.middleInitial}">${record.owner.middleInitial}.</c:if>
+										${record.owner.lastName}
+									</td>
+									<td scope="col" class="align-middle">${record.vehicle.vehicleDetails.color} ${record.vehicle.make} ${record.vehicle.model} (${record.vehicle.year})</td>
+									<td scope="col" class="align-middle">${record.registerDate}</td>
+									<td scope="col" class="align-middle">
+										<form action="ViewDetails.do" method="POST">
+											<input type="hidden" name="record-index" value="${loop.index}">
+											<button type="submit" class="btn btn-primary">View</button>
+										</form>
+									</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</c:otherwise>
+			</c:choose>
 		</div>
 		
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -1,6 +1,8 @@
 package carregistry.model;
 
-public class Address {
+import java.io.Serializable;
+
+public class Address implements Serializable {
 	private String id, streetName, postalCode, city, province, unit;
 	private int streetNumber;
 	

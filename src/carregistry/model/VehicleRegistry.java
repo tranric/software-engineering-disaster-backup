@@ -1,8 +1,9 @@
 package carregistry.model;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class VehicleRegistry {
+public class VehicleRegistry implements Serializable {
 	private String id, branch, lien, insuranceName;
 	private Date registerDate, insuranceExpiry;
 	private double tax;

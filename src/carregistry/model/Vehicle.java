@@ -1,6 +1,8 @@
 package carregistry.model;
 
-public class Vehicle {
+import java.io.Serializable;
+
+public class Vehicle implements Serializable {
 	private String id, make, model, bodyStyle, modelType;
 	private boolean diesel;
 	private double weight, cost;
@@ -34,7 +36,7 @@ public class Vehicle {
 		this.cost       = cost;
 		this.passengers = passengers;
 		this.diesel     = diesel;
-		this.modelType  = model;
+		this.modelType  = modelType;
 		this.bodyStyle  = bodyStyle;
 		this.details    = details;
 		this.owner      = owner;

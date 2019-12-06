@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import carregistry.model.User;
 
 import carregistry.model.DatabaseConnector;
@@ -27,12 +29,12 @@ public class ProcessLogin extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			HttpSession session = request.getSession();
-			ArrayList<User> Usercheck = new LoginDAO().viewData(request.getParameter("id"), request.getParameter("pwd"));
+			User u = new LoginDAO().viewData(request.getParameter("id"));
 			
-			if (Usercheck.size() == 1) {
-				session.setAttribute("Login", Usercheck);
-				session.setAttribute("Id", Usercheck.get(0).getId());
-				session.setAttribute("Role", Usercheck.get(0).getRole());
+			if (BCrypt.checkpw(request.getParameter("pwd"), u.getPassword())) {
+				session.setAttribute("Login", u);
+				session.setAttribute("Id", u.getId());
+				session.setAttribute("Role", u.getRole());
 				
 				response.sendRedirect("HomePageInitController.do");	
 			} else {

@@ -1,8 +1,9 @@
 package carregistry.model;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Owner {
+public class Owner implements Serializable {
 	private String firstName, middleInitial, lastName,
 				   gender, email, phone, driverLicence;
 	private Date dateOfBirth;

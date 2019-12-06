@@ -15,15 +15,14 @@ import carregistry.model.User;
 public class LoginDAO {
 	
 	
-	public ArrayList<User> viewData(String id, String pwd) throws Exception {
+	public User viewData(String id) throws Exception {
 		ResultSet rSet = null;
 		
 		try {
 			Connection connection = new DatabaseConnector().getMySQLConnection();
-			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Login WHERE Userid = ? AND Pass = ?");
+			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Login WHERE Userid = ?");
 			
 			stmt.setString(1, id);
-			stmt.setString(2, pwd);
 			
 			rSet = stmt.executeQuery();
 		} 

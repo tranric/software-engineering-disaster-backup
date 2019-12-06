@@ -1,6 +1,8 @@
 package carregistry.model;
 
-public class VehicleDetails {
+import java.io.Serializable;
+
+public class VehicleDetails implements Serializable {
 	private String vin, color, driverLicense, modelId;
 	private int mileage;
 	

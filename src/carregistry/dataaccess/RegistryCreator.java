@@ -75,7 +75,7 @@ public class RegistryCreator {
 		stmt.setInt(5, v.getPassengers());
 		stmt.setBoolean(6, v.isDiesel());
 		stmt.setString(7, v.getModelType());
-		stmt.setInt(8, v.getYear()); // Not sure about this one. It's listed as YEAR type in the SQL code.
+		stmt.setInt(8, v.getYear());
 		stmt.setDouble(9, v.getCost());
 		stmt.setString(10, v.getId());
 		

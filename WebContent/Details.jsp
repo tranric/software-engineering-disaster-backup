@@ -41,6 +41,14 @@
 		</nav>
 		
 		<div class="container">
+			<div class="row">
+				<div class="col">
+					<form action="PrepRecordUpdateController.do" method="POST">
+						<input type="hidden" name="recordAsString" value="${recordAsString}"> <!-- Not the best data passing between two web pages, but I don't want to deal with cookies and GDPR right now -->
+						<input type="submit" class="btn btn-primary btn-page-top" value="Edit">
+					</form>
+				</div>
+			</div>
 			<div class="row justify-content-between">
 				<div class="card card-block col-xs-12 col-lg-6">
 					<h1 class="display-4">
@@ -99,6 +107,12 @@
 						</b>
 					</span>
 				</div>
+				<c:if test="${!empty record.insuranceName && !empty record.insuranceExpiry}">
+					<div class="col">
+						<h2>Insurance information</h2>
+						<span class="font-weight-bold">${record.insuranceName} expires on ${record.insuranceExpiry}</span>
+					</div>
+				</c:if>
 			</div>
 		</div>
 	

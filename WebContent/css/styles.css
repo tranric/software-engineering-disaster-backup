@@ -9,9 +9,11 @@ body > .container { margin-top: 25px; }
 .error { color: red; padding: 5px;}
 .nothing-to-show { margin-top: 50px; }
 
+.btn-page-top { margin-bottom: .75rem !important; }
+.btn-page-bottom { margin-top: .75rem !important; }
+
 .elevated-card {
-	width: 500px;
-	margin: 0 auto;
+	max-width: 500px;
 	padding: 25px;
 	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.75);
 	border-radius: 10px;

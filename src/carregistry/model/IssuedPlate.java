@@ -1,8 +1,9 @@
 package carregistry.model;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class IssuedPlate {
+public class IssuedPlate implements Serializable {
 	private String plateNumber, plateType, branch, regId;
 	private boolean due;
 	private Date issueDate, expiryDate;
